@@ -1,0 +1,21 @@
+{
+  "name": "gig-count-ajax",
+  "version": "0.0.1",
+  "homepage": "https://github.com/gigigo-html5/gig-count-ajax",
+  "authors": [
+    "Pedro Peña <pedro.jose@gigigo.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~1.2.0",
+    "iron-ajax": "PolymerElements/iron-ajax#^1.1.1",
+    "gig-button": "^0.0.9"
+  }
+}

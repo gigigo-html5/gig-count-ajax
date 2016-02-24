@@ -1,0 +1,90 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/gig-button/gig-button.html">
+
+<dom-module id="gig-count-ajax">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            font-family: Roboto,sans-serif;
+        }
+
+        .loading img {
+            width: 30px;
+        }
+
+        p {
+            font-size: 1.2rem;
+        }
+
+
+    </style>
+
+    <template>
+
+        <template is="dom-if" if="{{!button}}">
+            <p class="loading" hidden$="{{!loading}}"><img src="loading.svg" />
+        </template>
+
+        <p hidden$="{{loading}}">{{data}}</p>
+
+        <template is="dom-if" if="{{button}}">
+            <gig-button type="button" progress="zoom-in" on-click="ajaxCall" hidden$="{{!loading}}">[[button]]</gig-button>
+        </template>
+
+        <iron-ajax
+            url="[[url]]"
+            id="ajax"
+            handle-as="json"
+            on-response="ajaxResponse"
+            last-response="{{ajaxData}}"
+            on-error="ajaxError"></iron-ajax>
+
+    </template>
+
+    <script>
+        (function() {
+            Polymer({
+                is: 'gig-count-ajax',
+                ready: function() {
+                    this.$.ajax.auto = this.auto;
+                },
+                ajaxCall: function() {
+                    this.$.ajax.generateRequest();
+                },
+                ajaxResponse: function(event, data) {
+                    this.data = data.response.data;
+                    this.loading = false;
+                },
+                ajaxError: function(error) {
+                    console.log(error);
+                },
+                properties: {
+                    url: {
+                        type: String
+                    },
+                    data: {
+                        type: String,
+                        notify: true
+                    },
+                    loading: {
+                        type: Boolean,
+                        value: true
+                    },
+                    auto: {
+                        type: Boolean,
+                        value: false
+                    },
+                    button: {
+                        type: String,
+                        value: null
+                    }
+                }
+
+            })
+        })();
+    </script>
+
+</dom-module>
