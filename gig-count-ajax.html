@@ -26,28 +26,35 @@
             font-size: 1.2rem;
         }
 
+        .component {
+            text-align: center;
+        }
 
     </style>
 
     <template>
 
-        <template is="dom-if" if="{{!button}}">
-            <p class="loading" hidden$="{{!loading}}"><img src="loading.svg" />
-        </template>
+        <div class="component">
 
-        <p hidden$="{{loading}}">{{data}}</p>
+            <template is="dom-if" if="{{!button}}">
+                <p class="loading" hidden$="{{!loading}}"><img src="loading.svg" />
+            </template>
 
-        <template is="dom-if" if="{{button}}">
-            <gig-button type="button" progress="zoom-in" on-click="ajaxCall" hidden$="{{!loading}}">[[button]]</gig-button>
-        </template>
+            <p hidden$="{{loading}}">{{data}}</p>
 
-        <iron-ajax
-            url="[[url]]"
-            id="ajax"
-            handle-as="json"
-            on-response="ajaxResponse"
-            last-response="{{ajaxData}}"
-            on-error="ajaxError"></iron-ajax>
+            <template is="dom-if" if="{{button}}">
+                <gig-button type="button" progress="zoom-in" on-click="ajaxCall" hidden$="{{!loading}}">[[button]]</gig-button>
+            </template>
+
+            <iron-ajax
+                url="[[url]]"
+                id="ajax"
+                handle-as="json"
+                on-response="ajaxResponse"
+                last-response="{{ajaxData}}"
+                on-error="ajaxError"></iron-ajax>
+
+        </div>
 
     </template>
 
