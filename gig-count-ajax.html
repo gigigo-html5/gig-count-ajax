@@ -1,6 +1,6 @@
 <!--
  Webcomponent to generate count data from ajax
- @version v0.0.1 - 2016-02-24
+ @version v0.0.2 - 2016-02-24
  @link https://github.com/gigigo-html5/gig-count-ajax
  @author Pedro José Peña Jerez <pedro.jose@gigigo.com>
  @license MIT License, http://www.opensource.org/licenses/MIT
@@ -40,7 +40,14 @@
                 <p class="loading" hidden$="{{!loading}}"><img src="loading.svg" />
             </template>
 
-            <p hidden$="{{loading}}">{{data}}</p>
+            <p hidden$="{{loading}}">
+                {{data}}
+
+                <template is="dom-if" if="[[refresh]]">
+                <gig-button class="btn-icon btn-round btn-pure" icon="fa-refresh" progress="zoom-in" on-click="ajaxCall"></gig-button>
+                </template>
+
+            </p>
 
             <template is="dom-if" if="{{button}}">
                 <gig-button type="button" progress="zoom-in" on-click="ajaxCall" hidden$="{{!loading}}">[[button]]</gig-button>
@@ -64,6 +71,7 @@
                 is: 'gig-count-ajax',
                 ready: function() {
                     this.$.ajax.auto = this.auto;
+                    console.log(this.dataCache);
                 },
                 ajaxCall: function() {
                     this.$.ajax.generateRequest();
@@ -75,6 +83,10 @@
                 ajaxError: function(error) {
                     console.log(error);
                 },
+                _initialCache: function(value) {
+                    this.data = value;
+                    this.loading = false;
+                },
                 properties: {
                     url: {
                         type: String
@@ -82,6 +94,10 @@
                     data: {
                         type: String,
                         notify: true
+                    },
+                    dataCache: {
+                        type: String,
+                        observer: '_initialCache'
                     },
                     loading: {
                         type: Boolean,
@@ -94,6 +110,10 @@
                     button: {
                         type: String,
                         value: null
+                    },
+                    refresh: {
+                        type: Boolean,
+                        value: false
                     }
                 }
 
