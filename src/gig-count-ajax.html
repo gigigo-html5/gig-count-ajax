@@ -64,7 +64,6 @@
                 is: 'gig-count-ajax',
                 ready: function() {
                     this.$.ajax.auto = this.auto;
-                    console.log(this.dataCache);
                 },
                 ajaxCall: function() {
                     this.$.ajax.generateRequest();
@@ -74,7 +73,7 @@
                     this.loading = false;
                 },
                 ajaxError: function(error) {
-                    console.log(error);
+                    console.error('Error at gig-count-ajax: ', error);
                 },
                 _initialCache: function(value) {
                     this.data = value;
