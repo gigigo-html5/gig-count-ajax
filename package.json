@@ -1,6 +1,6 @@
 {
   "name": "gig-count-ajax",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Webcomponent to generate count data from ajax",
   "main": "gulpfile.js",
   "scripts": {
