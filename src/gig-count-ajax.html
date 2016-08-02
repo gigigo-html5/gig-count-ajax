@@ -1,90 +1,90 @@
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../iron-ajax/iron-ajax.html">
-<link rel="import" href="../gig-button/gig-button.html">
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/gig-button/gig-button.html">
 
 <dom-module id="gig-count-ajax">
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-            font-family: Roboto,sans-serif;
-        }
-
-        .loading img {
-            width: 30px;
-        }
-
-        p {
-            font-size: 1.2rem;
-        }
-
-
-    </style>
-
-    <template>
-
-        <template is="dom-if" if="{{!button}}">
-            <p class="loading" hidden$="{{!loading}}"><img src="loading.svg" />
+  <template>
+    <div class="component">
+      <template is="dom-if" if="{{!button}}">
+        <p class="loading" hidden$="{{!loading}}"><img src="loading.svg"/>
+      </template>
+      <p hidden$="{{loading}}">
+        {{data}}
+        <template is="dom-if" if="[[refresh]]">
+          <gig-button class="btn-icon btn-round btn-pure" icon="fa-refresh" progress="zoom-in"
+                      on-click="ajaxCall"></gig-button>
         </template>
+      </p>
 
-        <p hidden$="{{loading}}">{{data}}</p>
+      <template is="dom-if" if="{{button}}">
+        <gig-button type="button" progress="zoom-in" on-click="ajaxCall" hidden$="{{!loading}}">[[button]]</gig-button>
+      </template>
 
-        <template is="dom-if" if="{{button}}">
-            <gig-button type="button" progress="zoom-in" on-click="ajaxCall" hidden$="{{!loading}}">[[button]]</gig-button>
-        </template>
+      <iron-ajax
+        url="[[url]]"
+        id="ajax"
+        handle-as="json"
+        on-response="ajaxResponse"
+        last-response="{{ajaxData}}"
+        on-error="ajaxError">
+      </iron-ajax>
+    </div>
+  </template>
 
-        <iron-ajax
-            url="[[url]]"
-            id="ajax"
-            handle-as="json"
-            on-response="ajaxResponse"
-            last-response="{{ajaxData}}"
-            on-error="ajaxError"></iron-ajax>
-
-    </template>
-
-    <script>
-        (function() {
-            Polymer({
-                is: 'gig-count-ajax',
-                ready: function() {
-                    this.$.ajax.auto = this.auto;
-                },
-                ajaxCall: function() {
-                    this.$.ajax.generateRequest();
-                },
-                ajaxResponse: function(event, data) {
-                    this.data = data.response.data;
-                    this.loading = false;
-                },
-                ajaxError: function(error) {
-                    console.log(error);
-                },
-                properties: {
-                    url: {
-                        type: String
-                    },
-                    data: {
-                        type: String,
-                        notify: true
-                    },
-                    loading: {
-                        type: Boolean,
-                        value: true
-                    },
-                    auto: {
-                        type: Boolean,
-                        value: false
-                    },
-                    button: {
-                        type: String,
-                        value: null
-                    }
-                }
-
-            })
-        })();
-    </script>
-
+  <script>
+    (function() {
+      Polymer({
+        is: 'gig-count-ajax',
+        ready: function() {
+          this.$.ajax.auto = this.auto;
+        },
+        ajaxCall: function() {
+          this.$.ajax.generateRequest();
+        },
+        ajaxResponse: function(event, data) {
+          this.data = data.response.data;
+          this.loading = false;
+        },
+        ajaxError: function(error) {
+          console.error('Error at gig-count-ajax: ', error);
+        },
+        _initialCache: function(value) {
+          this.data = value;
+          this.loading = false;
+        },
+        properties: {
+          url: {
+            type: String
+          },
+          data: {
+            type: String,
+            notify: true
+          },
+          ajaxData: {
+            type: String
+          },
+          dataCache: {
+            type: String,
+            observer: '_initialCache'
+          },
+          loading: {
+            type: Boolean,
+            value: true
+          },
+          auto: {
+            type: Boolean,
+            value: false
+          },
+          button: {
+            type: String,
+            value: null
+          },
+          refresh: {
+            type: Boolean,
+            value: false
+          }
+        }
+      })
+    })();
+  </script>
 </dom-module>

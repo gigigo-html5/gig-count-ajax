@@ -6,7 +6,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <meta name="mobile-web-app-capable" content="yes">
     <title>Gig Component Count Ajax</title>
-    <link rel="import" href="/demo/gig-count-ajax.html">
+    <link rel="import" href="../src/gig-count-ajax.html">
 
     <style is="custom-style">
         .field {
@@ -36,6 +36,21 @@
     <div class="field">
         <label>Count with ajax, button handler</label>
         <gig-count-ajax url="http://localhost:3000/demo/data.json" button="See"></gig-count-ajax>
+    </div>
+
+    <div class="field">
+        <label>Count with ajax, button handler and refresh</label>
+        <gig-count-ajax url="http://localhost:3000/demo/data.json" button="See" refresh></gig-count-ajax>
+    </div>
+
+    <div class="field">
+        <label>Count with ajax, cached data</label>
+        <gig-count-ajax url="http://localhost:3000/demo/data.json" data-cache="20"></gig-count-ajax>
+    </div>
+
+    <div class="field">
+        <label>Count with ajax, cached data with button refresh</label>
+        <gig-count-ajax url="http://localhost:3000/demo/data.json" data-cache="20" refresh></gig-count-ajax>
     </div>
 
 
