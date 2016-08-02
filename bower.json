@@ -14,8 +14,8 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "~1.2.0",
-    "iron-ajax": "PolymerElements/iron-ajax#^1.1.1",
-    "gig-button": "^0.0.9"
+    "polymer": "^1.6.1",
+    "iron-ajax": "^1.4.3",
+    "gig-button": "^0.1.7"
   }
 }
