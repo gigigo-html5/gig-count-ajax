@@ -1,6 +1,6 @@
 <!--
  Webcomponent to generate count data from ajax
- @version v0.0.3 - 2016-08-02
+ @version v0.1.0 - 2016-08-02
  @link https://github.com/gigigo-html5/gig-count-ajax
  @author Pedro José Peña Jerez <pedro.jose@gigigo.com>
  @license MIT License, http://www.opensource.org/licenses/MIT
@@ -10,8 +10,12 @@
 <link rel="import" href="../iron-ajax/iron-ajax.html">
 <link rel="import" href="../gig-button/gig-button.html">
 
+<link rel="import" href="gig-count-ajax-style.html">
+
 <dom-module id="gig-count-ajax">
   <template>
+    <style include="gig-count-ajax-style"></style>
+
     <div class="component">
       <template is="dom-if" if="{{!button}}">
         <p class="loading" hidden$="{{!loading}}"><img src="loading.svg"/>

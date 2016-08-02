@@ -10,7 +10,7 @@
     "check-bower-deps": "ncu -m bower",
     "check-npm-deps": "ncu",
     "update-deps": "ncu -u && ncu -m bower -u",
-    "serve": "ws -p 3001",
+    "serve": "ws -p 3000",
     "lint-polymer": "polylint --root src gig-count-ajax.html gig-count-ajax-style.html",
     "release:patch": "gulp release && npm version patch --no-git-tag-version && git add -A && git commit -m \"chore(npm): update npm version\" && bower version patch -m \"chore(release): Bump to %s\" && git push --tags",
     "release:minor": "gulp release && npm version minor --no-git-tag-version && git add -A && git commit -m \"chore(npm): update npm version\" && bower version minor -m \"chore(release): Bump to %s\" && git push --tags",

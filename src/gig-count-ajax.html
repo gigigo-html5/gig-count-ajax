@@ -2,8 +2,12 @@
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/gig-button/gig-button.html">
 
+<link rel="import" href="gig-count-ajax-style.html">
+
 <dom-module id="gig-count-ajax">
   <template>
+    <style include="gig-count-ajax-style"></style>
+
     <div class="component">
       <template is="dom-if" if="{{!button}}">
         <p class="loading" hidden$="{{!loading}}"><img src="loading.svg"/>
