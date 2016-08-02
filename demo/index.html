@@ -1,58 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="fragment" content="!">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <meta name="mobile-web-app-capable" content="yes">
-    <title>Gig Component Count Ajax</title>
-    <link rel="import" href="../src/gig-count-ajax.html">
+  <meta charset="utf-8">
+  <meta name="fragment" content="!">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Gig Component Count Ajax</title>
+  <link rel="import" href="../src/gig-count-ajax.html">
 
-    <style is="custom-style">
-        .field {
-            position:relative;
-            padding: 10px 0;
-        }
+  <style is="custom-style">
+    .field {
+      position: relative;
+      padding: 10px 0;
+    }
 
-        label {
-            font-family: sans-serif;
-            font-size: 14px;
-            display: block;
-            margin: 0 0 5px 0;
-        }
-
-
-    </style>
+    label {
+      font-family: sans-serif;
+      font-size: 14px;
+      display: block;
+      margin: 0 0 5px 0;
+    }
+  </style>
 </head>
 <body>
 
 
-    <div class="field">
-        <label>Count with ajax auto</label>
-        <gig-count-ajax url="http://localhost:3000/demo/data.json" auto></gig-count-ajax>
-    </div>
+<div class="field">
+  <label>Count with ajax auto</label>
+  <gig-count-ajax url="http://localhost:3000/demo/data.json" auto></gig-count-ajax>
+</div>
 
 
-    <div class="field">
-        <label>Count with ajax, button handler</label>
-        <gig-count-ajax url="http://localhost:3000/demo/data.json" button="See"></gig-count-ajax>
-    </div>
+<div class="field">
+  <label>Count with ajax, button handler</label>
+  <gig-count-ajax url="http://localhost:3000/demo/data.json" button="See"></gig-count-ajax>
+</div>
 
-    <div class="field">
-        <label>Count with ajax, button handler and refresh</label>
-        <gig-count-ajax url="http://localhost:3000/demo/data.json" button="See" refresh></gig-count-ajax>
-    </div>
+<div class="field">
+  <label>Count with ajax, button handler and refresh</label>
+  <gig-count-ajax url="http://localhost:3000/demo/data.json" button="See" refresh></gig-count-ajax>
+</div>
 
-    <div class="field">
-        <label>Count with ajax, cached data</label>
-        <gig-count-ajax url="http://localhost:3000/demo/data.json" data-cache="20"></gig-count-ajax>
-    </div>
+<div class="field">
+  <label>Count with ajax, cached data</label>
+  <gig-count-ajax url="http://localhost:3000/demo/data.json" data-cache="20"></gig-count-ajax>
+</div>
 
-    <div class="field">
-        <label>Count with ajax, cached data with button refresh</label>
-        <gig-count-ajax url="http://localhost:3000/demo/data.json" data-cache="20" refresh></gig-count-ajax>
-    </div>
-
+<div class="field">
+  <label>Count with ajax, cached data with button refresh</label>
+  <gig-count-ajax url="http://localhost:3000/demo/data.json" data-cache="20" refresh></gig-count-ajax>
+</div>
 
 
 </body>
